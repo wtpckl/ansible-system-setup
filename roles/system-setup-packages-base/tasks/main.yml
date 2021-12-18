@@ -18,6 +18,7 @@
       - tmux
       - man-db
       - man-pages
+      - openssh
 
 - name: Installing Vim
   community.general.pacman:
