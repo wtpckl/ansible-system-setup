@@ -12,14 +12,11 @@
 
 - name: Copy files to home directory
   ansible.builtin.copy:
-    src: { item.src }
+    src: "{{ item.src }}"
     dest: "/home/ewout/{{ item.dest }}"
     owner: ewout
     group: ewout
   loop:
-    - src: pam_environment
-      dest: .pam_environment
-    - src: vimrc
-      dest: .vimrc
-    - src: zshrc
-      dest: .config/zsh/.zshrc
+    - { src: pam_environment, dest: .pam_environment }
+    - { src: vimrc, dest: .vimrc }
+    - { src: zshrc, dest: .config/zsh/.zshrc }
