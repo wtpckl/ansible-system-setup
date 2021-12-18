@@ -10,6 +10,11 @@
     ssh_key_file: .ssh/id_default
     comment: Ewout
 
+- name: Create directories in home directory
+  ansible.builtin.file:
+    name: /home/ewout/.config/zsh/
+    state: directory
+
 - name: Copy files to home directory
   ansible.builtin.copy:
     src: "{{ item.src }}"
