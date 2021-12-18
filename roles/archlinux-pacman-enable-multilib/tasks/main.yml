@@ -1,7 +1,7 @@
 # This role will enable the `multilib` respository in the Pacman package manager
 
 - name: Enable `multilib` repository
-  register: archlinux-pacman-enable-multilib
+  register: archlinux_pacman_enable_multilib
   ansible.builtin.blockinfile:
     path: /etc/pacman.conf
     block: |
@@ -10,6 +10,6 @@
     marker: "# {mark} ANSIBLE MANAGED SECTION - archlinux-pacman-enable-multilib"
 
 - name: Refresh package index
-  when: archlinux-pacman-enable-multilib.changed
+  when: archlinux_pacman_enable_multilib.changed
   community.general.pacman:
     update_cache: yes
