@@ -53,5 +53,4 @@
     mode: 0600
     validate: /usr/bin/visudo -csf %s
   loop:
-    - src: sudo_wheel
-      dest: 99-wheel
+    - { src: sudo_wheel, dest: 99-wheel }
