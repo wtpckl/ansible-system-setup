@@ -46,7 +46,7 @@
 
 - name: Install sudo privilege files
   ansible.builtin.copy:
-    src: { item.src }
+    src: "{{ item.src }}"
     dest: "/etc/sudoers.d/{{ item.dest }}"
     owner: root
     group: root
