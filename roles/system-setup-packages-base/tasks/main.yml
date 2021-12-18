@@ -1,0 +1,57 @@
+# This role will install some base packages in an Archlinux system
+
+- name: Installing base packages
+  community.general.pacman:
+    name:
+      # Make sure the base packages are installed
+      - base
+
+      # Install development tools like GCC, GNU Make, sed, sudo, ...
+      - base-devel
+
+      # Make sure ansible is installed
+      - ansible
+
+      # Install General utilities
+      - git
+      - screen
+      - tmux
+      - man-db
+      - man-pages
+
+- name: Installing Vim
+  community.general.pacman:
+    name:
+      - vim
+      - vim-editorconfig
+      - vim-ansible
+
+- name: Installing Python
+  community.general.pacman:
+    name:
+      # Install Python and utilities
+      - python
+      - python-pip
+      - python-virtualenv
+      - pyenv
+
+- name: Installing Zsh
+  community.general.pacman:
+    name:
+      - zsh
+      - zsh-completions
+      - zsh-history-substring-search
+      - zsh-syntax-highlightinh
+      - zsh-theme-powerlevel10k
+
+- name: Install sudo privilege files
+  ansible.builtin.copy:
+    src: { item.src }
+    dest: "/etc/sudoers.d/{{ item.dest }}"
+    owner: root
+    group: root
+    mode: 0600
+    validate: /usr/bin/visudo -csf %s
+  loop:
+    - src: sudo_wheel
+      dest: 99-wheel

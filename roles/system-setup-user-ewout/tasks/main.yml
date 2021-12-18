@@ -1,0 +1,25 @@
+- name: Create user `ewout`
+  ansible.builtin.user:
+    name: ewout
+    append: yes
+    groups:
+      - wheel
+    shell: /usr/bin/zsh
+    generate_ssh_key: yes
+    ssh_key_type: ed25519
+    ssh_key_file: .ssh/id_default
+    comment: Ewout
+
+- name: Copy files to home directory
+  ansible.builtin.copy:
+    src: { item.src }
+    dest: "/home/ewout/{{ item.dest }}"
+    owner: ewout
+    group: ewout
+  loop:
+    - src: pam_environment
+      dest: .pam_environment
+    - src: vimrc
+      dest: .vimrc
+    - src: zshrc
+      dest: .config/zsh/.zshrc

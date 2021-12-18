@@ -1,0 +1,10 @@
+# This role will do some small customizations to pacman's config file
+
+- name: Customizing pacman config
+  ansible.builtin.blockinfile:
+    path: /etc/pacman.conf
+    block: |
+      [options]
+      Color
+      CheckSpace
+    marker: "# {mark} ANSIBLE MANAGED SECTION - archlinux-pacman-customization"

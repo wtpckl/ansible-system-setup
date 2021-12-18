@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - archlinux-pacman-enable-multilib
+    - archlinux-pacman-customization
+
+    - system-setup-packages-base
+
+    - system-setup-user-ewout

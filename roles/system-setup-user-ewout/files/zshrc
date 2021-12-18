@@ -1,0 +1,70 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ==============================================================================
+# User configuration
+
+# ======================================
+# Add extra bin-dirs to PATH
+
+if [ -d $HOME/.local/usr/bin ]; then
+    export PATH="$HOME/.local/usr/bin:$PATH"
+fi
+
+if [ -d $HOME/.local/bin ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d $HOME/.local/share/go/bin ]; then
+    export PATH="$HOME/.local/share/go/bin:$PATH"
+fi
+
+# ======================================
+# Set MANPATH correctly
+
+if [ -d $HOME/.local/share/man ]; then
+    export MANPATH="$HOME/.local/share/man:$MANPATH"
+fi
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Aliases
+alias ls="ls --color=auto"
+alias l="ls -lah --color=auto --group-directories-first"
+alias ll="ls -la --color=auto --group-directories-first"
+alias diff="diff --color=auto"
+alias config="/usr/bin/git --git-dir=\"$HOME/.dotfiles/\" --work-tree=\"$HOME\""
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+
+# Load local installs
+if [ -f $HOME/.local/.zshrc ]; then
+    source $HOME/.local/.zshrc
+fi
+
+# Set up some things when using the kitty terminal
+if [ $TERM = 'xterm-kitty' && command -v kitty >/dev/null 2>&1 ]; then
+    kitty + complete setup zsh | source /dev/stdin
+fi
+
+# Load pyenv
+if command -v pyenv >/dev/null 2>&1; then 
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"; 
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# ==============================================================================
+# Load plugins
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
