@@ -41,7 +41,7 @@
       - zsh
       - zsh-completions
       - zsh-history-substring-search
-      - zsh-syntax-highlightinh
+      - zsh-syntax-highlighting
       - zsh-theme-powerlevel10k
 
 - name: Install sudo privilege files
