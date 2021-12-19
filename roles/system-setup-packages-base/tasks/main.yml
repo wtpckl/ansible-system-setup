@@ -45,6 +45,15 @@
       - zsh-syntax-highlighting
       - zsh-theme-powerlevel10k
 
+- name: Installing Podman
+  community.general.pacman:
+    name: podman
+
+- name: Installing optional dependencies for Podman
+  community.general.pacman:
+    name: catatonit
+    extra_args: "--asdeps"
+
 - name: Install sudo privilege files
   ansible.builtin.copy:
     src: "{{ item.src }}"
