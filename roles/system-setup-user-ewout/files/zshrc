@@ -1,3 +1,19 @@
+# ==============================================================================
+# Lines configured by zsh-newuser-install
+HISTFILE="$ZDOTDIR/histfile"
+HISTSIZE=10000
+SAVEHIST=10000
+# End of lines configured by zsh-newuser-install
+
+# ==============================================================================
+# The following lines were added by compinstall
+zstyle :compinstall filename "$ZDOTDIR/.zshrc"
+
+autoload -U compinit
+compinit
+# End of lines added by compinstall
+
+# ==============================================================================
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -11,22 +27,22 @@ fi
 # ======================================
 # Add extra bin-dirs to PATH
 
-if [ -d $HOME/.local/usr/bin ]; then
+if [ -d "$HOME/.local/usr/bin" ]; then
     export PATH="$HOME/.local/usr/bin:$PATH"
 fi
 
-if [ -d $HOME/.local/bin ]; then
+if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d $HOME/.local/share/go/bin ]; then
+if [ -d "$HOME/.local/share/go/bin" ]; then
     export PATH="$HOME/.local/share/go/bin:$PATH"
 fi
 
 # ======================================
 # Set MANPATH correctly
 
-if [ -d $HOME/.local/share/man ]; then
+if [ -d "$HOME/.local/share/man" ]; then
     export MANPATH="$HOME/.local/share/man:$MANPATH"
 fi
 
@@ -45,11 +61,11 @@ alias diff="diff --color=auto"
 alias config="/usr/bin/git --git-dir=\"$HOME/.dotfiles/\" --work-tree=\"$HOME\""
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+[[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
 
 # Load local installs
-if [ -f $HOME/.local/.zshrc ]; then
-    source $HOME/.local/.zshrc
+if [ -f "$HOME/.local/.zshrc" ]; then
+    source "$HOME/.local/.zshrc"
 fi
 
 # Set up some things when using the kitty terminal
@@ -67,4 +83,11 @@ fi
 # ==============================================================================
 # Load plugins
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+if [ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+    source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+    bindkey "$terminfo[kcuu1]" history-substring-search-up
+    bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
