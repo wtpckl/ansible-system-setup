@@ -22,6 +22,6 @@
     owner: ewout
     group: ewout
   loop:
-    - { src: pam_environment, dest: .pam_environment }
+    - { src: zshenv, dest: .zshenv }
     - { src: vimrc, dest: .vimrc }
     - { src: zshrc, dest: .config/zsh/.zshrc }
