@@ -14,6 +14,8 @@
   ansible.builtin.file:
     name: /home/ewout/.config/zsh/
     state: directory
+    owner: ewout
+    group: ewout
 
 - name: Copy files to home directory
   ansible.builtin.copy:
