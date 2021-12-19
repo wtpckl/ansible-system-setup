@@ -53,7 +53,7 @@ if [ -f $HOME/.local/.zshrc ]; then
 fi
 
 # Set up some things when using the kitty terminal
-if [ $TERM = 'xterm-kitty' && command -v kitty >/dev/null 2>&1 ]; then
+if [ $TERM = 'xterm-kitty' ] && command -v kitty >/dev/null 2>&1; then
     kitty + complete setup zsh | source /dev/stdin
 fi
 
