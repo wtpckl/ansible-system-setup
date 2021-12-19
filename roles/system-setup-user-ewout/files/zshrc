@@ -92,8 +92,8 @@ bindkey -M vicmd "^[[F"  end-of-line
 # ==============================================================================
 # Load plugins
 
-if [ -f /usr/share/zsh-theme-powerlevel10k/zsh-theme-powerlevel10k.zsh-theme ]; then
-    source /usr/share/zsh-theme-powerlevel10k/zsh-theme-powerlevel10k.zsh-theme
+if [ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 fi
 
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
