@@ -3,6 +3,7 @@ export NVM_DIR=${HOME}/.config/nvm
 export PARALLEL_HOME=${HOME}/.config/parallel
 export PYENV_ROOT=${HOME}/.config/pyenv
 export ZDOTDIR=${HOME}/.config/zsh
+export ZSH=${HOME}/.config/oh-my-zsh
 export TEXMFHOME=${HOME}/.local/share/texmf
 export CARGO_HOME=${HOME}/.cache/cargo
 export RUSTUP_HOME=${HOME}/.config/rustup
